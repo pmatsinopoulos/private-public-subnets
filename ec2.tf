@@ -58,7 +58,7 @@ resource "aws_instance" "ec2_2" {
   availability_zone           = "eu-west-1b"
   subnet_id                   = aws_subnet.subnet_2.id
   key_name                    = aws_key_pair.private_public_subnets.key_name
-  associate_public_ip_address = false
+  associate_public_ip_address = true
 
   tags = {
     "Name" = "ec2-2"
