@@ -59,8 +59,16 @@ resource "aws_instance" "ec2_2" {
   subnet_id                   = aws_subnet.subnet_2.id
   key_name                    = aws_key_pair.private_public_subnets.key_name
   associate_public_ip_address = true
+  vpc_security_group_ids = [
+    aws_security_group.ssh_access.id
+  ]
 
   tags = {
     "Name" = "ec2-2"
   }
+}
+
+output "ssh_command_to_connect_to_ec2" {
+  value       = "ssh -i ./id_rsa ec2-user@${aws_instance.ec2_2.public_dns}"
+  description = "This is how you can connect to the EC2 2 machine"
 }
