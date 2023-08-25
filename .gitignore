@@ -2,3 +2,6 @@
 .terraform
 *.tfstate
 *.tfstate.backup
+id_rsa
+id_rsa.pub
+id_rsa_passphrase.txt
