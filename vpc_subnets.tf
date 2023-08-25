@@ -8,6 +8,11 @@ resource "aws_subnet" "subnet_1" {
   vpc_id = aws_vpc.private_and_public_subnets.id
 }
 
+resource "aws_route_table_association" "to_nat_gateway" {
+  subnet_id      = aws_subnet.subnet_1.id
+  route_table_id = aws_route_table.to_nat_gateway.id
+}
+
 resource "aws_subnet" "subnet_2" {
   availability_zone = "eu-west-1b"
   cidr_block        = "172.18.0.16/28"
